@@ -1,0 +1,15 @@
+i.icon{
+	font-size: 2em;
+}
+
+.container.main{
+	margin-top: 7em;
+}
+
+#delete {
+	display: inline;
+}
+
+body{
+	background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(239,246,249,1) 0%, rgba(206,239,253,1) 90% );
+}

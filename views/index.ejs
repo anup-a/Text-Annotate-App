@@ -1,0 +1,89 @@
+<% include ./partials/header %>
+
+<div class="ui main container">
+	<div class="ui text center segment header" style="max-width: 870px!important;margin-left: auto!important; margin-right:auto!important;margin-top:-5px;">
+			Welcome : <%= user %>
+			<div style="float: right">Count :-<%= user_count %></div>
+	</div>
+
+	<form action="/submit" method="POST">
+		<!-- <div class="ui top attached segment"> 
+			 <div class="ui divided items"> -->
+				<% texts.forEach(function(text){ %>
+				<div class="ui raised padded text container segment" style="max-width: 870px!important;margin-left: auto!important; margin-right:auto!important">
+				<% let tag = text._id %>
+				<div class="item">
+					<div class="content">
+						<%= text.data %>
+					</div>
+				</div>
+				<div class="ui clearing divider"></div>
+				<div class="ui buttons" >
+					<div class="ui slider checkbox" style="padding-top: 0.7rem; margin-right:3px">
+						<input type="checkbox" name="[<%= tag %>][political]">
+						<label>Political</label>
+					</div>
+					<select name="[<%= tag %>][sentements]" multiple=""
+						class="label ui right selection dropdown">
+						<option value="">Sentements</option>
+						<option value="Spam">Spam</option>
+						<option value="Advertisement">Advertisement</option>
+						<option value="Offensive">Offensive</option>
+						<option value="Others">Others</option>
+					</select>
+					<select name="[<%= tag %>][favour]" multiple=""
+						class="label ui right selection dropdown">
+  						<span class="text">Select Language</span>
+						<option value="">favour</option>
+						<option value="INC">INC</option>
+						<option value="BJP">BJP</option>
+						<option value="BSP">BSP</option>
+						<option value="AAP">AAP</option>
+						<option value="SP">SP</option>
+						<option value="Trinamool Congress">Trinamool Congress</option>
+						<option value="Others">Others</option>
+					</select>
+
+					<select name="[<%= tag %>][against]" multiple=""
+						class="label ui right selection dropdown">
+						<option value="">Against</option>
+						<option value="INC">INC</option>
+						<option value="BJP">BJP</option>
+						<option value="BSP">BSP</option>
+						<option value="AAP">AAP</option>
+						<option value="SP">SP</option>
+						<option value="Trinamool Congress">Trinamool Congress</option>
+						<option value="Others">Others</option>
+					</select>
+
+					<select name="[<%= tag %>][language]"
+						class="label ui right selection dropdown">
+						<option value="">Language</option>
+						<option value="English">English</option>
+						<option value="Hindi">Hindi</option>
+						<option value="Others">Others</option>
+					</select>
+
+				</div>
+			</div>
+				<% }) %>
+			<center><button class="ui green button" type="submit" >Submit</button></center>
+		
+	</form>
+</div>
+
+<script>
+	$('.label.ui.dropdown')
+		.dropdown();
+
+	$('.no.label.ui.dropdown')
+		.dropdown({
+			useLabels: false
+		});
+
+	$('.ui.button').on('click', function () {
+		$('.ui.dropdown')
+			.dropdown('restore defaults')
+	})
+</script>
+<% include ./partials/footer %>

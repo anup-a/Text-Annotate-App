@@ -1,0 +1,26 @@
+<% include ./partials/header %>
+
+<div class="ui main text container">
+
+	<div class="ui huge header"><%= blog.title %></div>
+
+	<div class="ui top attached segment">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%= blog.image %>"></img>
+			<div class="content">
+				<span><%= blog.created.toDateString() %></span>
+
+			</div>
+			<div class="description">
+				<p><%- blog.body%></p>	<!--What the - does is it takes blog.body and evaluates it as code-->
+			</div>
+			<a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+			<form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+				<button class="ui red basic button">Delete</button>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+<% include ./partials/footer %>
